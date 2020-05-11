@@ -4,12 +4,12 @@ const nodeExternals = require("webpack-node-externals");
 
 module.exports = {
   // Define the location of the entry file of the application
-  entry: ["webpack/hot/poll?100", ".src/index.ts"],
+  entry: ["webpack/hot/poll?100", "./src/index.ts"],
   watch: true,
   target: "node",
   externals: [
     nodeExternals({
-      whitelist: ["webpack/hot/poll?"]
+      whitelist: ["webpack/hot/poll?100"]
     })
   ],
   module: {
