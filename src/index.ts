@@ -6,6 +6,8 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import { itemsRouter } from "./items/items.router";
+import { errorHandler } from "./middleware/error.middleware";
+import { notFoundHandler } from "./middleware/notFound.middleware";
 
 dotenv.config();
 
@@ -23,6 +25,10 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 app.use("/items", itemsRouter);
+
+// All the router should placed "before" this error handlers
+app.use(errorHandler);
+app.use(notFoundHandler);
 
 /**
  * Server Activation
